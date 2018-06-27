@@ -1,6 +1,6 @@
 This is a l_softmax 
 
-reference:
+reference paper:
 '''Large-Margin Softmax Loss for Convolutional Neural Networks'''
 
 reference url:
