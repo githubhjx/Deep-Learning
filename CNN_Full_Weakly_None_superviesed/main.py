@@ -503,12 +503,12 @@ with tf.variable_scope("inference_op") as scope:
 
 fc8_l = fc8_s - fc8
 # output_s = tf.to_float(tf.greater_equal(Ys, 0)) * fc8_s
-s_loss = tf.multiply(tf.maximum((fc8_s-Y - 0.1), 0) + tf.maximum((Y-fc8_s - 0.1), 0), F)
+s_loss = tf.reduce_mean(tf.multiply(tf.maximum((fc8_s-Y - 0.1), 0) + tf.maximum((Y-fc8_s - 0.1), 0), F))
 
 regularization_loss = tf.reduce_mean(tf.square(kernel))
 
 ## M is a weakly_superviesed flag
-hinge_loss = tf.square(tf.losses.hinge_loss(Y, fc8_l))*M  
+hinge_loss = tf.reduce_mean(tf.square(tf.losses.hinge_loss(Y, fc8_l))*M)  
 
 # hinge_loss = tf.reduce_mean(tf.square(tf.maximum(tf.zeros([N_BATCH, N_LABEL]), 1 - Y * fc8)))
 
