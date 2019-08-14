@@ -13,16 +13,16 @@ from mydatasets import ImageFolder
 
 sys.setrecursionlimit(100000)
 
-pre_model = '/data/datasets/NIR-VIS/LightCNN_9Layers_checkpoint.pth.tar'
+pre_model = 'LightCNN_9Layers_checkpoint.pth.tar'
 
-tr_path = '/data/datasets/NIR-VIS/align_crop/train_balance/'
+tr_path = ''
 
-gallery_path = '/data/datasets/NIR-VIS/align_crop/gallery/'
-val_path = '/data/datasets/NIR-VIS/align_crop/probe/'
+gallery_path = ''
+val_path = ''
 
-save_model = '/data/model/'
-loss_log_path = '/data/logs/loss'
-acc_log_path = '/data/logs/accuracy'
+save_model = ''
+loss_log_path = ''
+acc_log_path = ''
 
 epochs = 100
 BATCH_SIZE = 32
