@@ -116,7 +116,8 @@ class Network(nn.Module):
         x_v = x_v.view(x_v.size(0), -1)
 
         # feature share
-        x_w = F.dropout(self.fc1(x_n)+self.fc1(x_v), training=self.training)
+        x_w_n = F.dropout(self.fc1(x_n), training=self.training)
+        x_w_v = F.dropout(self.fc1(x_v), training=self.training)
 
         # feature unique
         x_p_n = F.dropout(self.fc_n_1(x_n), training=self.training)
@@ -126,7 +127,7 @@ class Network(nn.Module):
         output_1 = self.fc_n_2(torch.cat((x_w, x_p_n), 1))
         output_2 = self.fc_v_2(torch.cat((x_w, x_p_v), 1))
 
-        return output_1, output_2, x_p_n, x_p_v
+        return output_1, output_2, x_w_n, x_w_v
 
 
 def network(**kwargs):
